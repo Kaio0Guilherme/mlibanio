@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <img id="logo" src="/imagens/logoM.jpg"  width="300px" alt="">
+        <h1 class="text-center mb-4">Tela de Login</h1>
+        <form id="loginForm" onsubmit="return loginUser(event)">
+            <div class="form-group">
+                <label for="username">Usuário:</label>
+                <input type="text" id="username" class="form-control" placeholder="Digite seu nome de usuário" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Senha:</label>
+                <input type="password" id="password" class="form-control" placeholder="Digite sua senha" required>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Entrar</button>
+            <button type="button" class="btn btn-secondary btn-block mt-2" onclick="showRegisterForm()">Cadastrar Usuário</button>
+        </form>
+
+        <div id="registerForm" class="d-none mt-4">
+            <h2 class="text-center">Cadastrar Usuário</h2>
+            <div class="form-group">
+                <label for="newUsername">Usuário:</label>
+                <input type="text" id="newUsername" class="form-control" placeholder="Escolha um nome de usuário" required>
+            </div>
+            <div class="form-group">
+                <label for="newPassword">Senha:</label>
+                <input type="password" id="newPassword" class="form-control" placeholder="Escolha uma senha" required>
+            </div>
+            <button type="button" class="btn btn-success btn-block" onclick="registerUser()">Cadastrar</button>
+            <button type="button" class="btn btn-danger btn-block mt-2" onclick="hideRegisterForm()">Cancelar</button>
+        </div>
+    </div>
+
+    <script>
+        function loginUser(event) {
+            event.preventDefault(); // Impede o envio do formulário
+
+            // Captura os valores do formulário
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            // Valida as credenciais
+            const savedPassword = localStorage.getItem(username);
+            if (savedPassword && savedPassword === password) {
+                // Armazena o estado de login no localStorage
+                localStorage.setItem('isLoggedIn', true);
+                // Redireciona para a página principal
+                window.location.href = 'index.html';
+            } else {
+                alert('Credenciais inválidas. Tente novamente ou cadastre-se.');
+            }
+        }
+
+        function registerUser() {
+            const newUsername = document.getElementById('newUsername').value;
+            const newPassword = document.getElementById('newPassword').value;
+
+            // Verifica se o usuário já existe
+            if (localStorage.getItem(newUsername)) {
+                alert('Usuário já existe. Tente um nome de usuário diferente.');
+                return;
+            }
+
+            // Armazena a nova conta no localStorage
+            localStorage.setItem(newUsername, newPassword);
+            alert('Usuário cadastrado com sucesso! Você pode fazer login agora.');
+            hideRegisterForm(); // Oculta o formulário de registro
+        }
+
+        function showRegisterForm() {
+            document.getElementById('registerForm').classList.remove('d-none');
+            document.getElementById('loginForm').classList.add('d-none');
+        }
+
+        function hideRegisterForm() {
+            document.getElementById('registerForm').classList.add('d-none');
+            document.getElementById('loginForm').classList.remove('d-none');
+        }
+    </script>
+</body>
+</html>

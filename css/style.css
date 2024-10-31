@@ -1,0 +1,32 @@
+body {
+    font-family: 'Times New Roman', Times, serif;
+}
+
+h1, h2, h3 {
+    color: #e74c3c;
+}
+
+.btn-primary {
+    background-color: #e74c3c;
+    border-color: #e74c3c;
+}
+
+.btn-primary:hover {
+    background-color: #d62c1a;
+    border-color: #d62c1a;
+}
+
+.list-group-item {
+    color: #e74c3c;
+}
+
+.list-group-item:hover {
+    background-color: #f7f7f7;
+}
+
+
+#logo {
+    display: block;
+    margin: 0 auto 20px auto; /* Centraliza horizontalmente e adiciona um espaçamento inferior */
+    padding: 10px;
+}

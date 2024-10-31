@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mapa de Cultivo de Cacau</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <script>
+        // Verifica se o usuário está logado
+        const isLoggedIn = localStorage.getItem('isLoggedIn');
+
+        if (!isLoggedIn) {
+            alert('Você precisa estar logado para acessar esta página.');
+            window.location.href = 'login.html'; // Redireciona para a tela de login
+        }
+    </script>
+
+    <!-- Tela Inicial de Seleção de Fazendas -->
+    <div id="farmSelection" class="container mt-5">
+        <img id="logo" src="/imagens/logoM.jpg"  width="300px" alt="">
+        <h1 class="text-center mb-4">Selecione a Fazenda</h1>
+        <div class="list-group">
+            <a href="#" class="list-group-item list-group-item-action" onclick="openFarm('Fazenda 1')">Fazenda 1</a>
+            <a href="#" class="list-group-item list-group-item-action" onclick="openFarm('Fazenda 2')">Fazenda 2</a>
+            <a href="#" class="list-group-item list-group-item-action" onclick="openFarm('Fazenda 3')">Fazenda 3</a>
+            <a href="#" class="list-group-item list-group-item-action" onclick="openFarm('Fazenda 4')">Fazenda 4</a>
+        </div>
+    </div>
+
+    <!-- Tela de Seleção de Glebas da Fazenda -->
+    <div id="glebaSelection" class="container mt-5 d-none">
+        <button class="btn btn-primary mb-3" onclick="goBackToFarms()">Voltar</button>
+        <img id="logo" src="/imagens/logoM.jpg"  width="300px" alt="">
+        <h2 id="farmTitle" class="text-center mb-4"></h2>
+        <p class="text-center">Escolha uma gleba para ver detalhes:</p>
+        <div class="glebas-list mt-4">
+            <button class="btn btn-secondary btn-block mb-2" onclick="showGlebaInfo('Gleba 1')">Gleba 1</button>
+            <button class="btn btn-secondary btn-block mb-2" onclick="showGlebaInfo('Gleba 2')">Gleba 2</button>
+            <button class="btn btn-secondary btn-block mb-2" onclick="showGlebaInfo('Gleba 3')">Gleba 3</button>
+            <button class="btn btn-secondary btn-block mb-2" onclick="showGlebaInfo('Gleba 4')">Gleba 4</button>
+        </div>
+    </div>
+
+    <!-- Tela de Detalhes da Gleba com formulário para edição -->
+    <div id="glebaDetails" class="container mt-5 d-none">
+        <button class="btn btn-primary mb-3" onclick="goBackToGlebas()">Voltar para Glebas</button> 
+        <img id="logo" src="/imagens/logoM.jpg"  width="300px" alt="">
+        <h3 id="glebaTitle" class="text-primary"></h3>
+        
+        <form id="glebaForm">
+            <div class="form-group">
+                <label for="hectares">Hectares:</label>
+                <input placeholder="Ex:10" type="text" id="hectares" class="form-control" value="10">
+            </div>
+            <div class="form-group">
+                <label for="numMudas">Nº de Mudas:</label>
+                <input placeholder="Ex:1.500" type="text" id="numMudas" class="form-control" value="16.660">
+            </div>
+            <div class="form-group">
+                <label for="tipoSolo">Tipo de Solo:</label>
+                <input placeholder="Ex:Arenoso" type="text" id="tipoSolo" class="form-control" value="Argiloso e bem drenado; pH entre 5,0 e 7,0.">
+            </div>
+            <div class="form-group">
+                <label for="tipoPlantio">Tipo de Plantio:</label>
+                <input placeholder="Ex:Clonado" type="text" id="tipoPlantio" class="form-control" value="Clonado.">
+            </div>
+            <div class="form-group">
+                <label for="climaIdeal">Clima Ideal:</label>
+                <input placeholder="Ex:Sol 35°C" type="text" id="climaIdeal" class="form-control" value="Temperatura entre 21°C e 32°C; Precipitação entre 1.500 e 2.500 mm por ano; Umidade de 70% a 100%">
+            </div>
+            <button type="button" class="btn btn-success" onclick="saveGlebaInfo()">Salvar Alterações</button>
+        </form>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
