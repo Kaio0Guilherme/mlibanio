@@ -14,13 +14,13 @@
 
         if (!isLoggedIn) {
             alert('Você precisa estar logado para acessar esta página.');
-            window.location.href = 'login.html'; // Redireciona para a tela de login
+            window.location.href = 'index.html'; // Redireciona para a tela de login
         }
     </script>
 
     <!-- Tela Inicial de Seleção de Fazendas -->
     <div id="farmSelection" class="container mt-5">
-        <img id="logo" src="/imagens/logoM.jpg"  width="300px" alt="">
+        <img id="logo" src="imagens/logoM.jpg"  width="300px" alt="">
         <h1 class="text-center mb-4">Selecione a Fazenda</h1>
         <div class="list-group">
             <a href="#" class="list-group-item list-group-item-action" onclick="openFarm('Fazenda 1')">Fazenda 1</a>
@@ -33,7 +33,7 @@
     <!-- Tela de Seleção de Glebas da Fazenda -->
     <div id="glebaSelection" class="container mt-5 d-none">
         <button class="btn btn-primary mb-3" onclick="goBackToFarms()">Voltar</button>
-        <img id="logo" src="/imagens/logoM.jpg"  width="300px" alt="">
+        <img id="logo" src="imagens/logoM.jpg"  width="300px" alt="">
         <h2 id="farmTitle" class="text-center mb-4"></h2>
         <p class="text-center">Escolha uma gleba para ver detalhes:</p>
         <div class="glebas-list mt-4">
@@ -47,7 +47,7 @@
     <!-- Tela de Detalhes da Gleba com formulário para edição -->
     <div id="glebaDetails" class="container mt-5 d-none">
         <button class="btn btn-primary mb-3" onclick="goBackToGlebas()">Voltar para Glebas</button> 
-        <img id="logo" src="/imagens/logoM.jpg"  width="300px" alt="">
+        <img id="logo" src="imagens/logoM.jpg"  width="300px" alt="">
         <h3 id="glebaTitle" class="text-primary"></h3>
         
         <form id="glebaForm">
