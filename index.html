@@ -9,7 +9,7 @@
 </head>
 <body>
     <div class="container mt-5">
-        <img id="logo" src="/imagens/logoM.jpg"  width="300px" alt="">
+        <img id="logo" src="imagens/logoM.jpg"  width="300px" alt="">
         <h1 class="text-center mb-4">Tela de Login</h1>
         <form id="loginForm" onsubmit="return loginUser(event)">
             <div class="form-group">
@@ -53,7 +53,7 @@
                 // Armazena o estado de login no localStorage
                 localStorage.setItem('isLoggedIn', true);
                 // Redireciona para a página principal
-                window.location.href = 'index.html';
+                window.location.href = 'tela.html';
             } else {
                 alert('Credenciais inválidas. Tente novamente ou cadastre-se.');
             }
